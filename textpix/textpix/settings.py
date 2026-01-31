@@ -30,7 +30,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-y$9=!k#9y4)yq8slp$ub+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+# 允许的主机
+_allowed_hosts = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+if _allowed_hosts == '*':
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = [host.strip() for host in _allowed_hosts.split(',')]
 
 
 
@@ -146,12 +151,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CORS 配置（允许前端访问）
-CORS_ALLOWED_ORIGINS_STR = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000')
-CORS_ALLOWED_ORIGINS = [origin.strip() for origin in CORS_ALLOWED_ORIGINS_STR.split(',')]
+_cors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000')
+
+if _cors_origins == '*':
+    # 允许所有来源（仅用于测试！）
+    CORS_ALLOW_ALL_ORIGINS = True
+    CORS_ALLOWED_ORIGINS = []
+else:
+    CORS_ALLOW_ALL_ORIGINS = False
+    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in _cors_origins.split(',')]
 
 # 生产环境也可以使用正则匹配
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.vercel\.app$",  # 允许所有 Vercel 子域名
+    r"^https://.*\.onrender\.com$",  # 允许所有 Render 子域名
 ]
 
 CORS_ALLOW_METHODS = [
