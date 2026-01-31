@@ -15,8 +15,6 @@ def get_config(key, default=None):
 
 # ==================== AI 模型配置 ====================
 
-# AI 模型类型: custom
-AI_MODEL_TYPE = get_config('AI_MODEL_TYPE', 'custom')
 
 # -------------------- 自定义 AI 服务配置 --------------------
 CUSTOM_AI_BASE_URL = get_config('CUSTOM_AI_BASE_URL', '')

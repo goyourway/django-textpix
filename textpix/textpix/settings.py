@@ -61,7 +61,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
-    
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -133,16 +133,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
-# Additional locations of static files
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
- 
-# The absolute path to the directory where collectstatic will collect static files for deployment.
+
+# React 前端构建输出目录
+REACT_BUILD_DIR = os.path.join(BASE_DIR.parent, 'my-react-app', 'build')
+
+# 静态文件目录（包含 React 构建的静态资源）
+STATICFILES_DIRS = [
+    os.path.join(REACT_BUILD_DIR, 'static'),
+] if os.path.exists(os.path.join(REACT_BUILD_DIR, 'static')) else []
+
+# collectstatic 输出目录
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# 静态文件存储（生产环境可使用 whitenoise）
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# 使用 whitenoise 提供静态文件服务（生产环境）
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type

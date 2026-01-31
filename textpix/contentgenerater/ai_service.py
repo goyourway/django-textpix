@@ -43,24 +43,19 @@ def get_ai_generator() -> AIContentGenerator:
         # 导入配置
         from . import config
         
-        logger.info(f"初始化 AI 生成器，类型: {config.AI_MODEL_TYPE}")
-
-
         # 根据配置选择生成器
-        if config.AI_MODEL_TYPE == 'custom':
-            if not config.CUSTOM_AI_API_KEY or not config.CUSTOM_AI_BASE_URL:
-                raise ValueError("自定义 AI 服务配置不完整")
-            
-            logger.info(f"使用自定义 AI 生成器: {config.CUSTOM_AI_BASE_URL}")
-            _generator = CustomAIGenerator(
-                base_url=config.CUSTOM_AI_BASE_URL,
-                api_key=config.CUSTOM_AI_API_KEY,
-                model=config.CUSTOM_AI_MODEL,
-                timeout=config.CUSTOM_AI_TIMEOUT
-            )
+        if not config.CUSTOM_AI_API_KEY or not config.CUSTOM_AI_BASE_URL:
+            raise ValueError("自定义 AI 服务配置不完整")
         
-        else:
-            raise ValueError(f"未识别的 AI 模型类型: {config.AI_MODEL_TYPE}")
+        logger.info(f"使用自定义 AI 生成器: {config.CUSTOM_AI_BASE_URL}")
+        _generator = CustomAIGenerator(
+            base_url=config.CUSTOM_AI_BASE_URL,
+            api_key=config.CUSTOM_AI_API_KEY,
+            model=config.CUSTOM_AI_MODEL,
+            timeout=config.CUSTOM_AI_TIMEOUT
+        )
+        
+     
             
     
     return _generator
