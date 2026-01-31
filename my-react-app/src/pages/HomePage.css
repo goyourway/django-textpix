@@ -1,0 +1,128 @@
+.home-page {
+  height: 100vh;
+  height: 100dvh; /* 动态视口高度，解决移动端地址栏问题 */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 移动端标签切换器 */
+.mobile-tabs {
+  display: none;
+  background: white;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 0;
+}
+
+.mobile-tab-btn {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  background: #f8f9fa;
+  color: #4a5568;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+}
+
+.mobile-tab-btn.active {
+  background: white;
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.mobile-tab-btn:not(.active):hover {
+  background: #edf2f7;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.left-panel {
+  width: 45%;
+  min-width: 400px;
+  max-width: 600px;
+  border-right: 2px solid #e2e8f0;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.right-panel {
+  flex: 1;
+  overflow: hidden;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 响应式设计 - 平板 */
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    width: 100%;
+    max-width: none;
+    min-width: auto;
+    border-right: none;
+    border-bottom: 2px solid #e2e8f0;
+    height: 50%;
+  }
+
+  .right-panel {
+    height: 50%;
+  }
+}
+
+/* 响应式设计 - 手机 */
+@media (max-width: 768px) {
+  .home-page {
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available; /* iOS Safari 兼容 */
+    min-height: 0; /* 允许收缩 */
+  }
+
+  .mobile-tabs {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .main-content {
+    flex: 1;
+    min-height: 0; /* 关键：允许 flex 子元素正确收缩 */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-panel {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    border: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .right-panel {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    border: none;
+    overflow: hidden; /* 不要 auto，让子元素处理滚动 */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-panel.hidden,
+  .right-panel.hidden {
+    display: none;
+  }
+}

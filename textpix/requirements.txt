@@ -1,0 +1,31 @@
+# Django 核心
+Django==5.2.10
+djangorestframework==3.16.1
+django-cors-headers==4.9.0
+
+# 异步 HTTP 客户端
+httpx==0.28.1
+aiohttp==3.13.3
+anyio==4.12.1
+h11==0.16.0
+httpcore==1.0.9
+certifi==2026.1.4
+idna==3.11
+
+# 环境变量
+python-dotenv==1.2.1
+
+# 生产服务器
+gunicorn==21.2.0
+
+# PostgreSQL 支持（Fly.io 数据库）
+psycopg2-binary==2.9.9
+dj-database-url==2.1.0
+
+# 静态文件处理
+whitenoise==6.6.0
+
+# 其他依赖
+asgiref==3.11.0
+sqlparse==0.5.5
+typing_extensions==4.15.0

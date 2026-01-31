@@ -1,0 +1,75 @@
+# ==================== 通用 ====================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ==================== IDE / 编辑器 ====================
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.continue/
+
+# ==================== Conda / Python 虚拟环境 ====================
+.conda/
+.venv/
+venv/
+env/
+ENV/
+.env
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+
+# ==================== Node.js / React ====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+/coverage
+/build
+dist/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==================== Django ====================
+textpix/.env
+textpix/db.sqlite3
+*.sqlite3
+*.log
+local_settings.py
+staticfiles/
+media/
+*.pot
+*.mo
+
+# ==================== 其他 ====================
+*.bak
+*.tmp
+*.temp
+.cache/
+logs/
+*.log
+
+# ==================== 敏感文件 ====================
+*.pem
+*.key
+secrets.json
+
+# ==================== 根目录临时/测试文件 ====================
+normal.html
+vercel.html
+wechat_chat_template.html

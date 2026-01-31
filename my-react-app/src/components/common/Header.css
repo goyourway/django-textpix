@@ -1,0 +1,134 @@
+.header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  max-width: 1920px;
+  margin: 0 auto;
+  height: 56px;
+  box-sizing: border-box;
+}
+
+.header-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20rem;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.logo:hover {
+  opacity: 0.7;
+}
+
+.header-nav {
+  display: flex;
+  gap: 0.25rem;
+  flex: 2;
+  justify-content: center;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: #666;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1a1a1a;
+}
+
+.nav-btn.active {
+  background: rgba(0, 0, 0, 0.08);
+  color: #1a1a1a;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20rem;
+}
+
+.user-btn {
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.user-btn:hover {
+  background: #333;
+}
+
+/* 移动端响应式样式 */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0.75rem 1rem;
+    height: 52px;
+  }
+
+  .header-left {
+    flex: none;
+    width: auto;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .header-right {
+    flex: none;
+  }
+
+  .user-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0.5rem 0.75rem;
+    height: 48px;
+  }
+
+  .logo {
+    font-size: 0.95rem;
+  }
+}
