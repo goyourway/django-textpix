@@ -8,6 +8,9 @@ COPY my-react-app/package*.json ./
 RUN npm install
 
 COPY my-react-app/ ./
+
+# 设置 React 构建时的环境变量（使用相对路径，因为前后端同域）
+ENV REACT_APP_API_URL=/api
 RUN npm run build
 
 # 阶段2: Python 后端
